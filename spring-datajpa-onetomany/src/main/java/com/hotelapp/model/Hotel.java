@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,13 +30,13 @@ public class Hotel {
 	
 	@Column(length=20)
 	@Enumerated(value=EnumType.STRING)
-	private String type;
+	private Type type;
 	
 	@Column(length=20)
 	private String city ;
 	
 	private double rating;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="hotel_id")
 	private Set<Item> itemList;
 
@@ -45,7 +46,7 @@ public class Hotel {
 	}
 
 
-	public Hotel(String name, String type, String city, double rating, Set<Item> itemList) {
+	public Hotel(String name, Type type, String city, double rating, Set<Item> itemList) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -91,13 +92,13 @@ public class Hotel {
 		return itemList;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
 
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

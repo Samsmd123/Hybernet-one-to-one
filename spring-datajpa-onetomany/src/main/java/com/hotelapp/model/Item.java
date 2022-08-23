@@ -21,7 +21,7 @@ public class Item {
 	
 	@Column(name="category",length=20)
 	@Enumerated(EnumType.STRING)
-	private String category;
+	private Category category;
 	
 
 	@Column(length=20)
@@ -34,7 +34,7 @@ public class Item {
 	
 	
 
-	public Item(String itemName, String category, String cuisine, Type itemtype, double price) {
+	public Item(String itemName, Category category, String cuisine, Type itemtype, double price) {
 		super();
 		this.itemName = itemName;
 		this.category = category;
@@ -68,11 +68,11 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
